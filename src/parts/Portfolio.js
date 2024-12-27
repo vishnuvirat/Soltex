@@ -13,7 +13,7 @@ import Button from '../elements/Button';
 export default function Portfolio({ data }) {
   return (
     <section className="container mx-auto flex flex-col items-center mt-20">
-      <Fade direction="right" triggerOnce>
+      <Fade direction="up" triggerOnce>
         <h1 className="text-5xl text-theme-blue text-center font-bold">Are you looking for a job opportunity?</h1>
       </Fade>
       <Fade direction="left" triggerOnce>
