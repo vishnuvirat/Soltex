@@ -44,7 +44,7 @@ export const Services = [
   {
     title: "Cloud Technologiest",
     imageUrl: Web,
-    animation: "left",
+    animation: "up",
   },
   {
     title: "App Development",
@@ -54,17 +54,17 @@ export const Services = [
   {
     title: "Big Data",
     imageUrl: UIUX,
-    animation: "right",
+    animation: "up",
   },
   {
     title: "DevOps",
     imageUrl: Devops,
-    animation: "left",
+    animation: "up",
   },
   {
     title: "SharePoint",
     imageUrl: Sharepoint,
-    animation: "right",
+    animation: "up",
   },
 ];
 

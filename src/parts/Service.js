@@ -11,10 +11,10 @@ export default function Service({ data }) {
   return (
     <div className="bg-gray-50">
       <div className="container mx-auto pt-20 pb-28">
-        <Fade direction="right" triggerOnce>
+        <Fade direction="up" triggerOnce>
           <h1 className="text-5xl text-theme-blue text-center font-bold">Our Service</h1>
         </Fade>
-        <Fade direction="left" triggerOnce>
+        <Fade direction="up" triggerOnce>
           <p className="font-light text-lg text-gray-400 text-center mb-12">
             We are ready to scale up your business with our great service.
           </p>
