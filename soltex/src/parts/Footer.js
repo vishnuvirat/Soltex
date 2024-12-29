@@ -16,10 +16,10 @@ export default function Footer() {
     <div className="bg-gray-50 border-t border-gray-200 pb-6">
       <div className="container flex-col mx-auto ">
         <div className="flex flex-col sm:flex-row mt-8 justify-center">
-          <div className="w-1/3 flex-col ml-16 mr-8 mb-4">
+          <div className="w-1/3 px-5 flex-col mb-4">
             <BrandIcon />
           </div>
-          <div className="w-full sm:w-1/3 mt-0 ml-16 mr-0 sm:ml-0 sm:mr-5">
+          <div className="w-full px-5 sm:w-1/3 mt-0 mr-0 sm:ml-0 sm:mr-5">
             <h1 className="text-2xl text-theme-blue font-semibold mb-4">
               Office
             </h1>
@@ -40,7 +40,7 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          <div className="w-1/3 ml-16 sm:ml-0 mt-0">
+          <div className="w-1/3 px-5 sm:ml-0 mt-0">
             <h1 className="text-lg text-theme-blue pt-4 pb-2">Social</h1>
             <Button
               href=""
