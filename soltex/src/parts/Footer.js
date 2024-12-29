@@ -14,9 +14,9 @@ import Button from "../elements/Button";
 export default function Footer() {
   return (
     <div className="bg-gray-50 border-t border-gray-200 pb-6">
-      <div className="container flex-col mx-auto ">
+      <div className="container flex-col mx-auto border-2 border-black">
         <div className="flex flex-col sm:flex-row mt-8 justify-center">
-          <div className="w-1/3 px-5 flex-col mb-4">
+          <div className=" flex w-full px-5 flex-col mb-4 justify-center items-center">
             <BrandIcon />
           </div>
           <div className="w-full px-5 sm:w-1/3 mt-0 mr-0 sm:ml-0 sm:mr-5">
