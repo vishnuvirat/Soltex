@@ -41,6 +41,24 @@ export default function Header() {
             Home
           </Button>
         </li>
+        <li>
+          <Button
+            className={`${path === '/aboutus' ? 'active-link' : ''} font-medium text-lg px-5 no-underline hover:underline`}
+            type="link"
+            href="/aboutus"
+          >
+            About Us
+          </Button>
+        </li>
+        <li>
+          <Button
+            className={`${path === '/services' ? 'active-link' : ''} font-medium text-lg px-5 no-underline hover:underline`}
+            type="link"
+            href="/services"
+          >
+            Services
+          </Button>
+        </li>
         <li className="py-2 lg:py-0">
           <Button
             className={`${path === '/project' ? 'active-link' : ''} font-medium text-lg px-5 no-underline hover:underline`}
@@ -81,6 +99,24 @@ export default function Header() {
                 href="/"
               >
                 Home
+              </Button>
+            </li>
+            <li className="py-2 bg-white">
+              <Button
+                className={`${path === '/aboutus' ? 'active-link' : ''} font-medium px-10 no-underline hover:underline`}
+                type="link"
+                href="/aboutus"
+              >
+                About Us
+              </Button>
+            </li>
+            <li className="py-2 bg-white">
+              <Button
+                className={`${path === '/services' ? 'active-link' : ''} font-medium px-10 no-underline hover:underline`}
+                type="link"
+                href="/services"
+              >
+                Services
               </Button>
             </li>
             <li className="py-2 bg-white">

@@ -9,6 +9,8 @@ import LandingPage from 'pages/LandingPage';
 import ProjectPage from 'pages/ProjectPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import TeamPage from 'pages/TeamPage';
+import AboutUs from 'pages/AboutUs';
+import Services from 'pages/Services';
 
 import { ProjectDetailPage } from 'pages/ProjectDetailPage';
 import { DiscussProjectPage } from 'pages/DiscussProjectPage';
@@ -24,6 +26,8 @@ function App() {
         <Route exact path="/project/:id" element={<ProjectDetailPage />} />
         <Route exact path="/team" element={<TeamPage />} />
         <Route exact path="/discuss-project" element={<DiscussProjectPage />} />
+        <Route exact path="/aboutus" element={<AboutUs />} />
+        <Route exact path="/services" element={<Services />} />
         <Route path="**" element={<NotFoundPage />} />
       </Routes>
     </>

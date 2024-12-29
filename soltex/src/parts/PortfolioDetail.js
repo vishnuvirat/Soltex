@@ -119,7 +119,7 @@ export default function PortfolioDetail({ data }) {
                     <div className="flex flex-col w-10/12 sm:w-11/12 xl:w-10/12 rounded-2xl bg-theme-purple text-gray-100 py-14 sm:px-12 sm:py-20 xl:px-16 shadow-2xl discuss">
                       <div className="flex flex-col sm:flex-row mb-3 sm:mb-9 p-5 sm:p-0 sm:items-center">
                         <h1 className="w-2/3 text-2xl sm:text-3xl leading-tight font-semibold">
-                          To apply, email your CV & Covering Letter to
+                          To apply, email your CV & Cover Letter to
                         </h1>
                         <Fade direction="up" triggerOnce delay={500}>
                           <Button

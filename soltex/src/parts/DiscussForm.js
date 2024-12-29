@@ -6,66 +6,74 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prop-types */
 import React from 'react';
-
 import { Fade } from 'react-awesome-reveal';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import * as emailjs from '@emailjs/browser';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ToastContainer, toast } from 'react-toastify';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Form } from 'elements/Form';
 import Button from 'elements/Button';
 
 export const DiscussForm = (actions) => {
-  const { data, resetForm } = actions;
-  const submitEmail = () => {
+  const {
+    data,
+    resetForm,
+  } = actions;
+
+  const submitEmail = async () => {
     const {
-      name, company, email, phone, projectIdea,
+      name,
+      company,
+      email,
+      phone,
+      projectIdea,
     } = data;
 
-    const templateParams = {
-      from_name: `${name} - ${company} ( ${phone} - ${email} )`,
-      to_name: 'Racxstudio',
-      message: projectIdea,
-    };
-
+    // Validate that all fields are filled
     if (
-      name !== ''
-      && company !== ''
-      && email !== ''
-      && phone !== ''
-      && projectIdea !== ''
+      name.trim() === ''
+      || company.trim() === ''
+      || email.trim() === ''
+      || phone.trim() === ''
+      || projectIdea.trim() === ''
     ) {
-      emailjs.send(
-        'service_h4gtndg',
-        'template_a9tvs7a',
-        templateParams,
-        'user_csqIxzN5mKsl1yw4ffJzV',
-      )
-        .then(() => {
-          toast.success('Success! we\'\ll get back to you soon. Thank you!');
-          resetForm();
-        }, (error) => {
-          toast.error(error);
-        });
-    } else {
-      toast.error('Please fill out the blank form.');
+      toast.error('Please fill out all the fields.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          name, company, email, phone, projectIdea,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("Success! We'll get back to you soon. Thank you!");
+        resetForm();
+      } else {
+        toast.error(result.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('An error occurred while sending the email. Please try again later.');
     }
   };
 
   return (
     <section className="flex flex-col container mx-auto mt-10 justify-center">
-
       <Fade direction="down" triggerOnce>
         <h1 className="text-5xl text-theme-blue text-center font-bold">Contact Us</h1>
       </Fade>
 
       <Fade direction="up" triggerOnce>
         <p className="font-light text-lg text-gray-400 text-center mb-12">
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          Please fill out the form below to discuss and we'll get back to you shortly.
+          Please fill out the form below to discuss and we will get back to you shortly.
         </p>
       </Fade>
 
@@ -78,7 +86,7 @@ export const DiscussForm = (actions) => {
               type="text"
               value={data.name}
               placeholder="Your name"
-              className=""
+              className="mr-0 sm:mr-2 mb-4 sm:mb-0"
               onChange={actions.onChange}
             />
             <Form
@@ -87,43 +95,44 @@ export const DiscussForm = (actions) => {
               type="text"
               value={data.company}
               placeholder="Your company"
-              className=""
+              className="ml-0 sm:ml-2"
               onChange={actions.onChange}
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row mx-auto">
+          <div className="flex flex-col sm:flex-row mx-auto mt-4">
             <Form
               id="email"
               name="email"
               type="email"
               value={data.email}
               placeholder="Your email address"
-              className=""
+              className="mr-0 sm:mr-2 mb-4 sm:mb-0"
               onChange={actions.onChange}
             />
             <Form
               id="phone"
               name="phone"
-              type="number"
+              type="tel"
               value={data.phone}
               placeholder="Your contact number"
-              className=""
+              className="ml-0 sm:ml-2"
               onChange={actions.onChange}
             />
           </div>
 
-          <div className="mx-auto">
+          <div className="mx-auto mt-4">
             <Form
               id="projectIdea"
               name="projectIdea"
               type="textarea"
               value={data.projectIdea}
-              placeholder="Send Us Message"
-              className=""
+              placeholder="Send Message"
+              className="w-full"
               onChange={actions.onChange}
             />
           </div>
+
           <Button
             className="text-xl mx-auto px-12 py-3 mt-5 bg-[#01a6a5] text-white rounded-full border-2 border-[#016a69] hover:bg-[#016a69] transition duration-200 focus:outline-none"
             type="button"
@@ -135,7 +144,6 @@ export const DiscussForm = (actions) => {
       </Fade>
 
       <ToastContainer />
-
     </section>
   );
 };
